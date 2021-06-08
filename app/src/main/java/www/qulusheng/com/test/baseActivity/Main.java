@@ -17,8 +17,7 @@ public class Main {
         //observer();
         //recursion();
         int[] data = StraightInsertionSort.insertSort() ;
-        //System.out.println(Arrays.toString(data));
-
+        System.out.println("Arrays.toString(data)");
     }
 
     public static void designPattern1() {

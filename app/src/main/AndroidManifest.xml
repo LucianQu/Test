@@ -10,13 +10,35 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
+        
+        
+        <service android:name="www.qulusheng.com.test.aidl.MyService"
+            android:enabled="true"
+            android:exported="true"
+            >
+            <intent-filter>
+                <action android:name="www.qulusheng.com.test.aidl.MyService1"/>
+            </intent-filter>
+        </service>
+        
+        <!--<receiver android:name=".broadcast.MyBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.broadcast.qulusheng" />
+            </intent-filter>
+        </receiver>-->
+        
     </application>
 
 </manifest>

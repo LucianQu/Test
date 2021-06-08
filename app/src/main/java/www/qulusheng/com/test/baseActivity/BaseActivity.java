@@ -13,4 +13,5 @@ public class BaseActivity extends Activity {
     public void print() {
         Log.e("Lucian--->BaseActivity","print") ;
     }
+
 }
