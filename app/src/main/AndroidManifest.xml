@@ -30,6 +30,14 @@
                 <action android:name="www.qulusheng.com.test.aidl.MyService1"/>
             </intent-filter>
         </service>
+        <service android:name="www.qulusheng.com.test.aidl.BinderPoolService"
+            android:enabled="true"
+            android:exported="true"
+            >
+            <intent-filter>
+                <action android:name="www.qulusheng.com.test.aidl.BinderPoolService"/>
+            </intent-filter>
+        </service>
         
         <!--<receiver android:name=".broadcast.MyBroadcastReceiver"
             android:enabled="true"

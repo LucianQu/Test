@@ -16,8 +16,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import www.qulusheng.com.test.aidl.BinderPool;
 import www.qulusheng.com.test.aidl.IMyAidlInterface;
 import www.qulusheng.com.test.aidl.MyService;
+import www.qulusheng.com.test.aidl.SecurityCenterImpl;
 import www.qulusheng.com.test.baseActivity.BaseActivity;
 import www.qulusheng.com.test.broadcast.MyBroadcastReceiver;
 
@@ -31,7 +33,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
         TextView textView = findViewById(R.id.tv_hello) ;
         textView.setOnClickListener(this);
-        bindService() ;
+        //bindService() ;
+        testBinderPool() ;
     }
 
     @Override
@@ -45,10 +48,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.tv_hello:
-                Log.e("Lucian-->tv_hello","123") ;
+                //Log.e("Lucian-->tv_hello","123") ;
                 //actionTest() ;
-                sendBroadcast();
-                getAidlMessage() ;
+                //sendBroadcast();
+                //getAidlMessage() ;
+                binderPoolDoWork() ;
                 break;
         }
     }
@@ -120,5 +124,33 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         intent.setAction(Intent.ACTION_INSERT) ;
         //intent.setAction(Intent.ACTION_SEARCH) ;
         startActivity(intent);
+    }
+    ISecurityCenter mSecurityCenter = null ;
+    private void testBinderPool() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Log.e("Lucian-->testBinderPool", "绑定");
+                BinderPool binderPool = BinderPool.getInstance(MainActivity.this) ;
+                IBinder securityBinder = binderPool.queryBinder(BinderPool.BINDER_SECURITY_CENTER) ;
+                mSecurityCenter = (ISecurityCenter) SecurityCenterImpl.asInterface(securityBinder) ;
+            }
+        }).start();
+    }
+
+    private void binderPoolDoWork() {
+        if (mSecurityCenter != null) {
+            String msg = "hello";
+            try {
+                String password = mSecurityCenter.encrypt(msg);
+                Log.e("Lucian--->password", password);
+                Log.e("Lucian--->password", mSecurityCenter.decrypt(password));
+            } catch (RemoteException e) {
+                e.printStackTrace();
+                Log.e("Lucian--->password", e.getMessage());
+            }
+        }else {
+            Log.e("Lucian--->password", "mSecurityCenter为空");
+        }
     }
 }

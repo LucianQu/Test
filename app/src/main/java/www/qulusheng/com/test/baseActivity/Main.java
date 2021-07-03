@@ -1,8 +1,11 @@
 package www.qulusheng.com.test.baseActivity;
 
+import android.util.Log;
+
 import java.util.Arrays;
 
 import www.qulusheng.com.test.arithmetic.StraightInsertionSort;
+import www.qulusheng.com.test.eventbus.MessageEvent;
 import www.qulusheng.com.test.observerDesign.ObserverDesign;
 import www.qulusheng.com.test.other.Recursion;
 import www.qulusheng.com.test.strategyDesign.DuckFly;
@@ -16,8 +19,9 @@ public class Main {
         //designPattern2();
         //observer();
         //recursion();
-        int[] data = StraightInsertionSort.insertSort() ;
-        System.out.println("Arrays.toString(data)");
+        //int[] data = StraightInsertionSort.insertSort() ;
+        //System.out.println("Arrays.toString(data)");
+        testMessageEvent() ;
     }
 
     public static void designPattern1() {
@@ -27,6 +31,11 @@ public class Main {
         redDuck.performFly();
         redDuck.setFlyProperty(new FlyBad());
         redDuck.performFly();
+    }
+
+    private static void testMessageEvent() {
+        MessageEvent messageEvent = new MessageEvent("123") ;
+        System.out.println(messageEvent.message);
     }
 
     public static void designPattern2() {
