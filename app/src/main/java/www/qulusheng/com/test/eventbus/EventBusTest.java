@@ -8,6 +8,7 @@ public class EventBusTest {
     public EventBusTest() {
         // 本类或子类必须有@Subscribe的pulic且非static的方法
         EventBus.getDefault().register(this);
+        int i = new MessageEvent("1").i ;
     }
 
     public static void main(String[] args) {

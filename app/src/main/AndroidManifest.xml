@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="www.qulusheng.com.test">
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+
     <application
         android:name=".AppContext"
         android:allowBackup="true"
@@ -13,6 +20,7 @@
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation"
+            android:theme="@style/themeno"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,14 +46,18 @@
                 <action android:name="www.qulusheng.com.test.aidl.BinderPoolService"/>
             </intent-filter>
         </service>
-        
-        <!--<receiver android:name=".broadcast.MyBroadcastReceiver"
+        <!--第一步 创建一个广播器接收类 MyBroadcastReceiver-->
+        <!--第二步 指定可以接收的broadcast action com.broadcast.qulusheng-->
+        <receiver android:name=".broadcast.MyBroadcastReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
                 <action android:name="com.broadcast.qulusheng" />
+                <action android:name="com.broadcast.qulusheng1" />
+                <action android:name="android.intent.action.SCREEN_OFF"/>
             </intent-filter>
-        </receiver>-->
+        </receiver>
         
     </application>
 

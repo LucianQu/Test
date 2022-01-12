@@ -2,7 +2,7 @@ package www.qulusheng.com.test.aidl;
 
 import android.os.RemoteException;
 
-import www.qulusheng.com.test.ICompute;
+import www.qulusheng.com.test.aidl.ICompute;
 
 public class ComputeImpl extends ICompute.Stub {
     @Override

@@ -2,7 +2,6 @@ package www.qulusheng.com.test.aidl;
 
 import android.os.RemoteException;
 
-import www.qulusheng.com.test.ISecurityCenter;
 
 public class SecurityCenterImpl extends ISecurityCenter.Stub {
     @Override

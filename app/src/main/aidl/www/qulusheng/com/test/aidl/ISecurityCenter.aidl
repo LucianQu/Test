@@ -1,5 +1,5 @@
 // ISecurityCenter.aidl
-package www.qulusheng.com.test;
+package www.qulusheng.com.test.aidl;
 
 // Declare any non-default types here with import statements
 

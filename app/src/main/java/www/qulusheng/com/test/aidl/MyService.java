@@ -24,7 +24,7 @@ public class MyService extends Service {
         return new MyBinder();
     }
 
-    class MyBinder extends IMyAidlInterface.Stub{
+    public class MyBinder extends IMyAidlInterface.Stub{
 
         @Override
         public String getName() throws RemoteException {

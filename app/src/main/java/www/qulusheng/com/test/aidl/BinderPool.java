@@ -10,7 +10,7 @@ import android.util.Log;
 
 import java.util.concurrent.CountDownLatch;
 
-import www.qulusheng.com.test.IBinderPool;
+import www.qulusheng.com.test.aidl.IBinderPool;
 
 public class BinderPool {
     private static final String TAG = "BinderPool" ;
